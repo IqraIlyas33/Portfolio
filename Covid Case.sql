@@ -3,31 +3,31 @@ FROM iqradb..CovidDeaths
 WHERE continent IS NULL
 ORDER BY location, date
 
---SELECT *
---FROM iqradb..CovidVaccinations
--- WHERE continent is not null
---ORDER BY location, date
+SELECT *
+FROM iqradb..CovidVaccinations
+WHERE continent is not null
+ORDER BY location, date
 
--- Select location, date, total_cases, new_cases, total_deaths, population
--- FROM iqradb..CovidDeaths
--- Order by 1,2
+Select location, date, total_cases, new_cases, total_deaths, population
+FROM iqradb..CovidDeaths
+Order by 1,2
 
 --Looking at total cases vs total deaths
 -- Shows likelihood of dying if you contract covid in your country
--- Select location, date, total_cases, total_deaths, 
--- (convert(float,total_deaths)/Nullif(Convert(float,total_cases),0))*100 AS DeathPercentage
--- FROM iqradb..CovidDeaths
---WHERE location LIKE '%states%' and continent is not null
---Order by 1,2
+Select location, date, total_cases, total_deaths, 
+(convert(float,total_deaths)/Nullif(Convert(float,total_cases),0))*100 AS DeathPercentage
+FROM iqradb..CovidDeaths
+WHERE location LIKE '%states%' and continent is not null
+Order by 1,2
 
 -- looking at the total cases vs Population
 -- Shows what percentage of population got covid
 
--- Select location, date, total_cases, population,
---(convert(float,total_cases)/population)*100 AS PercentPopulationInfected
---FROM iqradb..CovidDeaths
--- WHERE location LIKE '%states%'
--- Order by 1,2
+Select location, date, total_cases, population,
+(convert(float,total_cases)/population)*100 AS PercentPopulationInfected
+FROM iqradb..CovidDeaths
+WHERE location LIKE '%states%'
+Order by 1,2
 
 -- Looking at Companies with Highest Infection Rate compared to Population
 
